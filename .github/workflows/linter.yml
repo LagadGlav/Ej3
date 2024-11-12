@@ -1,0 +1,27 @@
+name: Ejecutar Linter con pylint
+
+on:
+  pull_request:
+    branches:
+      - 'Branche'  
+
+jobs:
+  linter:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+          
+      - name: Instalar pylint
+        run: |
+          pip install pylint
+
+      - name: Ejecutar pylint
+        run: |
+          pylint test.py  
